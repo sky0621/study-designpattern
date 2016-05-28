@@ -17,11 +17,15 @@ public class Main {
 
     void simulate() {
         List<Quackable> quackableList = new ArrayList<>();
-        quackableList.add(new QuackCountDecorator(new MallardDuck()));
-        quackableList.add(new QuackCountDecorator(new RedheadDuck()));
-        quackableList.add(new QuackCountDecorator(new DuckCall()));
-        quackableList.add(new QuackCountDecorator(new RubberDuck()));
-        quackableList.add(new GooseAdapter(new Goose()));   // ガチョウの鳴き声は不要
+
+        AbstractQuackFactory countFactory = new CountQuackFactory();
+        quackableList.add(countFactory.createMallardDuck());
+        quackableList.add(countFactory.createRedheadDuck());
+        quackableList.add(countFactory.createDuckCall());
+        quackableList.add(countFactory.createRubberDuck());
+
+        AbstractQuackFactory quackFactory = new QuackFactory();
+        quackableList.add(quackFactory.createGoose());
 
         System.out.println("\nDuck Simulater");
 
