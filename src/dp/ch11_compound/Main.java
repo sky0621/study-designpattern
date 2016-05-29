@@ -2,9 +2,6 @@ package dp.ch11_compound;
 
 import dp.Z;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by SS on 2016/05/23.
  */
@@ -16,20 +13,20 @@ public class Main {
     }
 
     void simulate() {
-        List<Quackable> quackableList = new ArrayList<>();
+        FlockComposite flockComposite = new FlockComposite();
 
         AbstractQuackFactory countFactory = new CountQuackFactory();
-        quackableList.add(countFactory.createMallardDuck());
-        quackableList.add(countFactory.createRedheadDuck());
-        quackableList.add(countFactory.createDuckCall());
-        quackableList.add(countFactory.createRubberDuck());
+        flockComposite.add(countFactory.createMallardDuck());
+        flockComposite.add(countFactory.createRedheadDuck());
+        flockComposite.add(countFactory.createDuckCall());
+        flockComposite.add(countFactory.createRubberDuck());
 
         AbstractQuackFactory quackFactory = new QuackFactory();
-        quackableList.add(quackFactory.createGoose());
+        flockComposite.add(quackFactory.createGoose());
 
         System.out.println("\nDuck Simulater");
 
-        quackableList.stream().forEach(quacker -> quacker.quack());
+        flockComposite.quack();
         Z.p(QuackCountDecorator.getQuacks());
     }
 
