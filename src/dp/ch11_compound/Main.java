@@ -7,6 +7,7 @@ import dp.Z;
  */
 // ダックシミュレーター
 public class Main {
+
     public static void main(String... args) {
         Main m = new Main();
         m.simulate();
@@ -24,7 +25,9 @@ public class Main {
         AbstractQuackFactory quackFactory = new QuackFactory();
         flockComposite.add(quackFactory.createGoose());
 
-        System.out.println("\nDuck Simulater");
+        Z.p("Duck Simulater with Observer");
+        QuackObserver observer = new Quackologist();
+        flockComposite.registerObserver(observer);
 
         flockComposite.quack();
         Z.p(QuackCountDecorator.getQuacks());

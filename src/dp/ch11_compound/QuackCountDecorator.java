@@ -24,4 +24,15 @@ public class QuackCountDecorator implements Quackable {
         return numberOfQuacks;
     }
 
+    @Override
+    public void registerObserver(QuackObserver observer) {
+        this.quackable.registerObserver(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        this.quackable.notifyObservers();
+    }
+
+
 }
